@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: registry
+  cloud:
+    config:
+#      uri: http://config:8888
+      uri: http://localhost:8888
+      fail-fast: true
+      password: fG3Ha3j64s
+      username: user
+  security:
+    basic:
+      enabled: true
+    user:
+      name: eureka_user
+      password: eu1234fHAgg
+
+logging:
+  file: /tmp/logs/registry.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    org.springframework.security: ERROR
+    com.github.sacredrelict.registry: ERROR
+    org.springframework.web: ERROR

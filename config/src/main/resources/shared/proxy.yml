@@ -1,0 +1,45 @@
+server:
+  port: 4002
+#  https.port: 4003
+# For enable it, change Tomcat settings in gateway service.
+
+# minimum 80000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 80000
+
+# Should be less then hystrix
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+zuul:
+  ignoredServices: '*'
+  sslHostnameValidationEnabled: false
+
+  host:
+    connect-timeout-millis: 80000
+    socket-timeout-millis: 80000
+
+  routes:
+    auth-service:
+        path: /uaa/**
+        serviceId: auth-service
+        stripPrefix: false
+        sensitiveHeaders:
+
+    api-service:
+        path: /api/**
+        serviceId: api-service
+        stripPrefix: false
+        sensitiveHeaders:
+
+    data-service:
+        path: /data/**
+        serviceId: data-service
+        stripPrefix: false
+        sensitiveHeaders:

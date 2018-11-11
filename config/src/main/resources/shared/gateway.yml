@@ -1,0 +1,30 @@
+server:
+  port: 4001
+#  https.port: 4000
+# For enable it, change Tomcat settings in gateway service.
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: auth-service
+        uri: lb://auth-service
+        predicates:
+        - Path=/uaa/**
+        filters:
+        - RewritePath=/uaa/(?<path>.*), /$\{path}
+      - id: api-service
+        uri: lb://api-service
+        predicates:
+        - Path=/api/**
+        filters:
+        - RewritePath=/api/(?<path>.*), /$\{path}
+      - id: data-service
+        uri: lb://data-service
+        predicates:
+        - Path=/data/**
+        filters:
+        - RewritePath=/data/(?<path>.*), /$\{path}

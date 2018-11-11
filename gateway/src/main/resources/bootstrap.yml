@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: gateway
+  cloud:
+    config:
+#      uri: http://config:8888
+      uri: http://localhost:8888
+      fail-fast: true
+      password: fG3Ha3j64s
+      username: user
+
+logging:
+  file: /tmp/logs/gateway.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    org.springframework.security: ERROR
+    com.github.sacredrelict.gateway: ERROR
+    org.springframework.web: ERROR

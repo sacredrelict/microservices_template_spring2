@@ -1,0 +1,15 @@
+spring:
+  profiles.active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+
+  security:
+    user:
+      password: fG3Ha3j64s
+
+server:
+  port: 8888
+

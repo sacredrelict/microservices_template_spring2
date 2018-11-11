@@ -1,0 +1,8 @@
+FROM java:8-jre
+MAINTAINER sacredrelict
+
+VOLUME /tmp
+ADD ./target/service-api.jar /app/
+CMD ["java", "-Xmx200m", "-jar", "/app/api-service.jar"]
+
+EXPOSE 9090

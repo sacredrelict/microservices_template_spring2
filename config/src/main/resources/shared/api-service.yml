@@ -1,0 +1,13 @@
+security:
+  oauth2:
+    client:
+      clientId: api-service-client
+      clientSecret: fJ764HjjJd
+#      accessTokenUri: http://gateway:4001/uaa/oauth/token
+      accessTokenUri: http://localhost:4001/uaa/oauth/token
+      grant-type: client_credentials
+      scope: data, api
+
+server:
+  context-path: /api
+  port: 9090

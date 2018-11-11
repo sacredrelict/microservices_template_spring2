@@ -1,0 +1,13 @@
+security:
+  oauth2:
+    client:
+      clientId: data-service-client
+      clientSecret: llJ63Hhj7K
+#      accessTokenUri: http://gateway:4001/uaa/oauth/token
+      accessTokenUri: http://localhost:4001/uaa/oauth/token
+      grant-type: client_credentials
+      scope: data, api
+
+server:
+  context-path: /data
+  port: 9191

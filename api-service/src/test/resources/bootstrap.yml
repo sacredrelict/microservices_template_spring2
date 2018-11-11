@@ -1,0 +1,57 @@
+spring:
+  profiles.active: dev
+  application:
+    name: api-service
+  cloud:
+    config:
+#      uri: http://config:8888
+      uri: http://localhost:8888
+      fail-fast: true
+      password: fG3Ha3j64s
+      username: user
+  jackson.serialization.write_dates_as_timestamps: false
+  messages:
+    basename: messages
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+
+# For pageable requests
+default.response.entries.size.limit: 1000
+default.response.length.bytes: 1024
+
+---
+
+spring:
+  profiles: dev
+
+logging:
+  file: /tmp/logs/test/service-api.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    org.springframework.security: ERROR
+    com.github.sacredrelict.api: DEBUG
+    org.springframework.web: DEBUG
+
+---
+
+spring:
+  profiles: test
+
+logging:
+  file: /tmp/logs/test/api-service.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    org.springframework.security: ERROR
+    com.github.sacredrelict.api: DEBUG
+    org.springframework.web: DEBUG
+
+---
